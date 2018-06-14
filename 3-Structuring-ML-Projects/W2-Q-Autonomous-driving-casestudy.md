@@ -9,7 +9,8 @@ Your 100,000 labeled images are taken using the front-facing camera of your car.
 You are just getting started on this project. What is the first thing you do? Assume each of the steps below would take about an equal amount of time (a few days).
 
 	[] Spend a few days getting the internet data, so that you understand better what data is available.
-	[] Spend a few days training a basic model and see what mistakes it makes.
+	[x] Spend a few days training a basic model and see what mistakes it makes.
+	Note: As discussed in lecture, applied ML is a highly iterative process. If you train a basic model and carry out error analysis (see what mistakes it makes) it will help point you in more promising directions.
 	[] Spend a few days collecting more data using the front-facing camera of your car, to better understand how much data per unit time you can collect.
 	[] Spend a few days checking what is human-level performance for these tasks so that you can get an accurate estimate of Bayes error.
 
@@ -19,13 +20,15 @@ Your goal is to detect road signs (stop sign, pedestrian crossing sign, construc
 For the output layer, a softmax activation would be a good choice for the output layer because this is a multi-task learning problem. True/False?
 	
 	[] True
-	[] False
+	[x] False
+	Note: Softmax would be a good choice if one and only one of the possibilities (stop sign, speed bump, pedestrian crossing, green light and red light) was present in each image.
 
 ### Question 3
 You are carrying out error analysis and counting up what errors the algorithm makes. Which of these datasets do you think you should manually go through and carefully examine, one image at a time?
 
 	[] 10,000 randomly chosen images
-	[] 500 images on which the algorithm made a mistake
+	[x] 500 images on which the algorithm made a mistake
+	Note: Focus on images that the algorithm got wrong. Also, 500 is enough to give you a good initial sense of the error statistics. There’s probably no need to look at 10,000, which will take a long time.
 	[] 500 randomly chosen images
 	[] 10,000 images on which the algorithm made a mistake
 
@@ -84,7 +87,8 @@ Because this is a multi-task learning problem, you need to have all your y^{(i)}
 ​	  then the learning algorithm will not be able to use that example. True/False?
 
 	[] True
-	[] False
+	[x] False
+	Note: As seen in the lecture on multi-task learning, you can compute the cost such that it is not influenced by the fact that some entries haven’t been labeled.
 
 ### Question 5
 The distribution of data you care about contains images from your car’s front-facing camera; which comes from a different distribution than the images you were able to find and download off the internet. How should you split the dataset into train/dev/test sets?
@@ -92,22 +96,23 @@ The distribution of data you care about contains images from your car’s front-
 	[] Choose the training set to be the 900,000 images from the internet along with 20,000 images from your car’s front-facing camera. The 80,000 remaining images will be split equally in dev and test sets.
 	[] Mix all the 100,000 images with the 900,000 images you found online. Shuffle everything. Split the 1,000,000 images dataset into 980,000 for the training set, 10,000 for the dev set and 10,000 for the test set.
 	[] Mix all the 100,000 images with the 900,000 images you found online. Shuffle everything. Split the 1,000,000 images dataset into 600,000 for the training set, 200,000 for the dev set and 200,000 for the test set.
-	[] Choose the training set to be the 900,000 images from the internet along with 80,000 images from your car’s front-facing camera. The 20,000 remaining images will be split equally in dev and test sets.
+	[x] Choose the training set to be the 900,000 images from the internet along with 80,000 images from your car’s front-facing camera. The 20,000 remaining images will be split equally in dev and test sets.
+	Note: Yes. As seen in lecture, it is important that your dev and test set have the closest possible distribution to “real”-data. It is also important for the training set to contain enough “real”-data to avoid having a data-mismatch problem.
 
 ### Question 6
 Assume you’ve finally chosen the following split between of the data:
 
-* Dataset			:	Contains																																																:	Error of the algorithm:
-* Training		| 940,000 images randomly picked from (900,000 internet images + 60,000 car’s front-facing camera images)	|	8.8%
+* Dataset			:	Contains : 	Error of the algorithm:
+* Training | 940,000 images randomly picked from (900,000 internet images + 60,000 car’s front-facing camera images)	|	8.8%
 * Training-Dev|	20,000 images randomly picked from (900,000 internet images + 60,000 car’s front-facing camera images)	| 9.1%
-* Dev					|20,000 images from your car’s front-facing camera																												|	14.3%
-* Test 				|	20,000 images from the car’s front-facing camera																												|	14.8%
+* Dev 	|20,000 images from your car’s front-facing camera 	|	14.3%
+* Test 	|	20,000 images from the car’s front-facing camera |	14.8%
 You also know that human-level error on the road sign and traffic signals classification task is around 0.5%. Which of the following are True? (Check all that apply).
 
 	[] You have a large variance problem because your training error is quite higher than the human-level error.
 	[] You have a large variance problem because your model is not generalizing well to data from the same training distribution but that it has never seen before.
-	[] You have a large data-mismatch problem because your model does a lot better on the training-dev set than on the dev set
-	[] You have a large avoidable-bias problem because your training error is quite a bit higher than the human-level error.
+	[x] You have a large data-mismatch problem because your model does a lot better on the training-dev set than on the dev set
+	[x] You have a large avoidable-bias problem because your training error is quite a bit higher than the human-level error.
 	[] Your algorithm overfits the dev set because the error of the dev and test sets are very close.
 
 ### Question 7
@@ -115,7 +120,8 @@ Based on table from the previous question, a friend thinks that the training dat
 
 	[] Your friend is right. (I.e., Bayes error for the training data distribution is probably lower than for the dev/test distribution.)
 	[] Your friend is wrong. (I.e., Bayes error for the training data distribution is probably higher than for the dev/test distribution.)
-	[] There’s insufficient information to tell if your friend is right or wrong.
+	[x] There’s insufficient information to tell if your friend is right or wrong.
+	Note: The algorithm does better on the distribution of data it trained on. But you don’t know if it’s because it trained on that no distribution or if it really is easier. To get a better sense, measure human-level error separately on both distributions.
 
 ### Question 8
 You decide to focus on the dev set and check by hand what are the errors due to. Here is a table summarizing your discoveries:
@@ -138,7 +144,8 @@ The results from this analysis implies that the team’s highest priority should
 ### Question 9
 You can buy a specially designed windshield wiper that help wipe off some of the raindrops on the front-facing camera. Based on the table from the previous question, which of the following statements do you agree with?
 
-	[] 2.2% would be a reasonable estimate of the maximum amount this windshield wiper could improve performance.
+	[x] 2.2% would be a reasonable estimate of the maximum amount this windshield wiper could improve performance.
+	Note: Yes. You will probably not improve performance by more than 2.2% by solving the raindrops problem. If your dataset was infinitely big, 2.2% would be a perfect estimate of the improvement you can achieve by purchasing a specially designed windshield wiper that removes the raindrops.
 	[] 2.2% would be a reasonable estimate of the minimum amount this windshield wiper could improve performance.
 	[] 2.2% would be a reasonable estimate of how much this windshield wiper will improve performance.
 	[] 2.2% would be a reasonable estimate of how much this windshield wiper could worsen performance in the worst case.
@@ -154,16 +161,19 @@ Which of the following statements do you agree with?
 ### Question 11
 After working further on the problem, you’ve decided to correct the incorrectly labeled data on the dev set. Which of these statements do you agree with? (Check all that apply).
 
-	[] You should also correct the incorrectly labeled data in the test set, so that the dev and test sets continue to come from the same distribution
+	[x] You should also correct the incorrectly labeled data in the test set, so that the dev and test sets continue to come from the same distribution
+	Note: Yes because you want to make sure that your dev and test data come from the same distribution for your algorithm to make your team’s iterative development process is efficient.
 	[] You should correct incorrectly labeled data in the training set as well so as to avoid your training set now being even more different from your dev set.
 	[] You should not correct the incorrectly labeled data in the test set, so that the dev and test sets continue to come from the same distribution
-	[] You should not correct incorrectly labeled data in the training set as it does not worth the time.
+	[x] You should not correct incorrectly labeled data in the training set as it does not worth the time.
+	Note: True, deep learning algorithms are quite robust to having slightly different train and dev distributions.
 
 ### Question 12
 So far your algorithm only recognizes red and green traffic lights. One of your colleagues in the startup is starting to work on recognizing a yellow traffic light. (Some countries call it an orange light rather than a yellow light; we’ll use the US convention of calling it yellow.) Images containing yellow lights are quite rare, and she doesn’t have enough data to build a good model. She hopes you can help her out using transfer learning.
 What do you tell your colleague?
 
-	[] She should try using weights pre-trained on your dataset, and fine-tuning further with the yellow-light dataset.
+	[x] She should try using weights pre-trained on your dataset, and fine-tuning further with the yellow-light dataset.
+	Note: Yes. You have trained your model on a huge dataset, and she has a small dataset. Although your labels are different, the parameters of your model have been trained to recognize many characteristics of road and traffic images which will be useful for her problem. This is a perfect case for transfer learning, she can start with a model with the same architecture as yours, change what is after the last hidden layer and initialize it with your trained parameters.
 	[] If she has (say) 10,000 images of yellow lights, randomly sample 10,000 images from your dataset and put your and her data together. This prevents your dataset from “swamping” the yellow lights dataset.
 	[] You cannot help her because the distribution of data you have is different from hers, and is also lacking the yellow label.
 	[] Recommend that she try multi-task learning instead of transfer learning using all the data.
@@ -174,7 +184,8 @@ Another colleague wants to use microphones placed outside the car to better hear
 	[] Transfer learning from your vision dataset could help your colleague get going faster. Multi-task learning seems significantly less promising.
 	[] Multi-task learning from your vision dataset could help your colleague get going faster. Transfer learning seems significantly less promising.
 	[] Either transfer learning or multi-task learning could help our colleague get going faster.
-	[] Neither transfer learning nor multi-task learning seems promising.
+	[x] Neither transfer learning nor multi-task learning seems promising.
+	Note: Yes. The problem he is trying to solve is quite different from yours. The different dataset structures make it probably impossible to use transfer learning or multi-task learning.
 
 ### Question 14
 To recognize red and green lights, you have been using this approach:
@@ -188,12 +199,14 @@ Between these two, Approach B is more of an end-to-end approach because it has d
 
 	[] True
 	
-	[] False
+	[x] False
+	Note: Yes. (A) is an end-to-end approach as it maps directly the input (x) to the output (y).
 
 ### Question 15
 Approach A (in the question above) tends to be more promising than approach B if you have a ________ (fill in the blank).
 
-	[] Large training set
+	[x] Large training set
+	Note: Yes. In many fields, it has been observed that end-to-end learning works better in practice, but requires a large amount of data.
 	[] Multi-task learning problem.
 	[] Large bias problem.
 	[] Problem with a high Bayes error.
