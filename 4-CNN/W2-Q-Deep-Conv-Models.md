@@ -17,8 +17,8 @@ Which of the following do you typically see in a ConvNet? (Check all that apply.
 ### Question 3
 In order to be able to build very deep networks, we usually only use pooling layers to downsize the height/width of the activation volumes while convolutions are used with “valid” padding. Otherwise, we would downsize the input of the model too quickly.
 
-    [x] True
-    [] False
+    [] True
+    [x] False
 
 ### Question 4
 Training a deeper network (for example, adding additional layers to the network) allows the network to fit more complex functions and thus almost always results in lower training error. For this question, assume we’re referring to “plain” networks.
@@ -31,10 +31,10 @@ The following equation captures the computation in a ResNet block. What goes int
 
 a[l+2]=g(W[l+2]g(W[l+1]a[l]+b[l+1])+bl+2+_______ )+_______
 
-    [x] 0 and a^[l], respectively
+    [] 0 and a^[l], respectively
     [] 00 and z^[l+1], respectively
     [] z^[l] and a^[l], respectively
-    [] a^[l] and 0, respectively
+    [x] a^[l] and 0, respectively
 
 ### Question 6
 Which ones of the following statements on Residual Networks are true? (Check all that apply.)
