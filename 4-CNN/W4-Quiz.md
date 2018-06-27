@@ -26,32 +26,10 @@ In order to train the parameters of a face recognition system, it would be reaso
 Which of the following is a correct definition of the triplet loss? Consider that \alpha > 0α>0. (We encourage you to figure out the answer from first principles, rather than just refer to the lecture.)
 
 
-    [] max(||f(A)-f(P)||^2 - ||f(A)-f(N)||^2 - \alpha, 0)max(∣∣f(A)−f(P)∣∣ 
-    2
-     −∣∣f(A)−f(N)∣∣ 
-    2
-     −α,0)
-
-
-    [] max(||f(A)-f(N)||^2 - ||f(A)-f(P)||^2 + \alpha, 0)max(∣∣f(A)−f(N)∣∣ 
-    2
-     −∣∣f(A)−f(P)∣∣ 
-    2
-     +α,0)
-
-
-    [] max(||f(A)-f(N)||^2 - ||f(A)-f(P)||^2 - \alpha, 0)max(∣∣f(A)−f(N)∣∣ 
-    2
-     −∣∣f(A)−f(P)∣∣ 
-    2
-     −α,0)
-
-
-    [] max(||f(A)-f(P)||^2 - ||f(A)-f(N)||^2 + \alpha, 0)max(∣∣f(A)−f(P)∣∣ 
-    2
-     −∣∣f(A)−f(N)∣∣ 
-    2
-     +α,0)
+    [] max(||f(A)-f(P)||^2 - ||f(A)-f(N)||^2 - \alpha, 0)max(∣∣f(A)−f(P)∣∣2 −∣∣f(A)−f(N)∣∣2 −α,0)
+    [] max(||f(A)-f(N)||^2 - ||f(A)-f(P)||^2 + \alpha, 0)max(∣∣f(A)−f(N)∣∣2 −∣∣f(A)−f(P)∣∣2 +α,0)
+    [] max(||f(A)-f(N)||^2 - ||f(A)-f(P)||^2 - \alpha, 0)max(∣∣f(A)−f(N)∣∣2 −∣∣f(A)−f(P)∣∣2 −α,0)
+    [] max(||f(A)-f(P)||^2 - ||f(A)-f(N)||^2 + \alpha, 0)max(∣∣f(A)−f(P)∣∣2 −∣∣f(A)−f(N)∣∣2 +α,0)
 
 ### Question 5
 Consider the following Siamese network architecture:
@@ -69,8 +47,8 @@ You train a ConvNet on a dataset with 100 different classes. You wonder if you c
 ### Question 7
 Neural style transfer is trained as a supervised learning task in which the goal is to input two images (xx), and train a network to output a new, synthesized image (yy).
 
-  [] True
-  [] False
+      [] True
+      [] False
 
 ### Question 8
 In the deeper layers of a ConvNet, each channel corresponds to a different feature detector. The style matrix G^[1] measures the degree to which the activations of different feature detectors in layer ll vary (or correlate) together with each other.
