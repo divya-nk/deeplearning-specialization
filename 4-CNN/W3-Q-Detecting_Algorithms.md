@@ -25,9 +25,12 @@ You are working on a factory automation task. Your system will see a can of soft
 What is the most appropriate set of output units for your neural network?
 
 	Logistic unit (for classifying if there is a soft-drink can in the image)
-	Logistic unit, b_x and b_y 
-	[x] Logistic unit, b_xb, b_y, b_h (since b_w=b_h)
+	[x] Logistic unit, b_x and b_y 
+	Logistic unit, b_xb, b_y, b_h (since b_w=b_h)
 	Logistic unit, b_x, b_y, b_h, b_w
+Note: For this eg: 
+(1) The cans are round, so that means the bounding boxes must be square, i.e. not rectangular. That removes the need to learn one of the bounding box parameters.
+(2) The cans are always the same size, so the algorithm doesn't need to learn a different bounding box size for every image
 
 ### Question 4
 If you build a neural network that inputs a picture of a person’s face and outputs N landmarks on the face (assume the input image always contains exactly one face), how many output units will the network have?
@@ -62,8 +65,8 @@ In the YOLO algorithm, at training time, only one cell ---the one containing the
 What is the IoU between these two boxes? The upper-left box is 2x2, and the lower-right box is 2x3. The overlapping region is 1x1.
 
 	1/6
-	1/9
-	[x] 1/10
+	[x] 1/9
+	1/10
 	None of the above
 
 ### Question 9
@@ -72,8 +75,8 @@ Suppose you run non-max suppression on the predicted boxes above. The parameters
 
 	3
 	4
-	5
-	[x] 6
+	[x] 5
+	6
 	7
 
 ### Question 10
@@ -82,5 +85,5 @@ Suppose you are using YOLO on a 19x19 grid, on a detection problem with 20 class
 
 	19x19x(25x20)
 	19x19x(20x25)
-	[x]19x19x(5x20)
-	19x19x(5x25)
+	19x19x(5x20)
+	[x] 19x19x(5x25)
